@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw4a033io0jmw"]
+
+[ext_resource type="Script" path="res://scripts/buttons/volume_slider.gd" id="1_fhnk2"]
+[ext_resource type="PackedScene" uid="uid://ce77qvftovpke" path="res://scenes/guis/bg.tscn" id="1_iufku"]
+[ext_resource type="PackedScene" uid="uid://volqi5eh2xft" path="res://scenes/buttons/generic_scene_switch.tscn" id="2_kosam"]
+
+[node name="OptionMenu" type="Node2D"]
+
+[node name="bg" parent="." instance=ExtResource("1_iufku")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 143.0
+offset_top = 151.0
+offset_right = 767.0
+offset_bottom = 316.0
+scale = Vector2(1.64, 1.64)
+
+[node name="master_vol_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="master_volume_slid" type="HSlider" parent="VBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_fhnk2")
+bus_name = "Master"
+
+[node name="music_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Music"
+horizontal_alignment = 1
+
+[node name="music_slid" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_fhnk2")
+bus_name = "music"
+
+[node name="sfx_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="sfx" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_fhnk2")
+bus_name = "sfx"
+
+[node name="generic_scene_switch" parent="." instance=ExtResource("2_kosam")]
+offset_left = 507.0
+offset_top = 522.0
+offset_right = 1131.0
+offset_bottom = 783.0
+scale = Vector2(0.447639, 0.447639)
+stretch_mode = 4
+target_scene_path = "res://scenes/guis/starting_menu.tscn"
+
+[node name="Label" type="Label" parent="generic_scene_switch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbhlg2pbu60lq"]
+
+[ext_resource type="Script" path="res://scripts/objects/puddle.gd" id="1_43eoh"]
+[ext_resource type="Texture2D" uid="uid://b77fy7gpk8crr" path="res://assets/objects/trial2/puddle.png" id="2_iegcm"]
+[ext_resource type="Texture2D" uid="uid://c7xqqfvx0irw" path="res://assets/objects/trial2/r.png" id="3_xvfrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmlne"]
+size = Vector2(27.6452, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0t02"]
+size = Vector2(62.3599, 29.8697)
+
+[node name="puddle" type="Area2D" groups=["reflecting"]]
+z_index = -8
+position = Vector2(0, 3)
+scale = Vector2(1.34702, 1.34702)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_43eoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.158881, -3.49537)
+shape = SubResource("RectangleShape2D_tmlne")
+debug_color = Color(0.294118, 1, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3.7119)
+scale = Vector2(0.0115057, 0.0073165)
+texture = ExtResource("2_iegcm")
+
+[node name="R" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -18.5595)
+scale = Vector2(0.129843, 0.129843)
+texture = ExtResource("3_xvfrn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9.53674e-07, -14.7603)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_b0t02")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

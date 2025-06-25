@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://sju1sk0nq1h8"]
+
+[ext_resource type="Texture2D" uid="uid://dnewanwemlls" path="res://assets/misc/logo/loading_screen.png" id="1_7ygpg"]
+[ext_resource type="Script" path="res://scripts/guis/starting_menu.gd" id="1_kj0sq"]
+[ext_resource type="PackedScene" uid="uid://volqi5eh2xft" path="res://scenes/buttons/generic_scene_switch.tscn" id="1_p4e0d"]
+[ext_resource type="Script" path="res://scripts/buttons/quit.gd" id="2_57bue"]
+[ext_resource type="Texture2D" uid="uid://dva254mfp4juy" path="res://assets/misc/title_screen/title.png" id="2_a7ii1"]
+[ext_resource type="Texture2D" uid="uid://qfl6dvn3d8l5" path="res://assets/misc/buttons/regular/button.png" id="4_re3f2"]
+[ext_resource type="PackedScene" uid="uid://ce77qvftovpke" path="res://scenes/guis/bg.tscn" id="6_3q1bg"]
+
+[node name="starting_menu" type="Node2D"]
+script = ExtResource("1_kj0sq")
+
+[node name="LoadingScreen" type="Sprite2D" parent="."]
+position = Vector2(229, 427)
+scale = Vector2(1.02489, 1.02489)
+texture = ExtResource("1_7ygpg")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(518, 109)
+scale = Vector2(0.234201, 0.234201)
+texture = ExtResource("2_a7ii1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 489.0
+offset_top = 294.0
+offset_right = 1113.0
+offset_bottom = 1085.0
+scale = Vector2(0.380046, 0.380046)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4e0d")]
+layout_mode = 2
+size_flags_horizontal = 4
+target_scene_path = "res://scenes/levels/intro.tscn"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_p4e0d")]
+layout_mode = 2
+target_scene_path = "res://scenes/guis/option_menu.tscn"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_re3f2")
+script = ExtResource("2_57bue")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bg" parent="." instance=ExtResource("6_3q1bg")]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_pressed"]

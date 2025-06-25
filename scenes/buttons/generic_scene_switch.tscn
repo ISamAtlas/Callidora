@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://volqi5eh2xft"]
+
+[ext_resource type="Texture2D" uid="uid://qfl6dvn3d8l5" path="res://assets/misc/buttons/regular/button.png" id="1_6c2wp"]
+[ext_resource type="Script" path="res://scripts/buttons/generic_scene_switch.gd" id="1_kg56c"]
+
+[node name="generic_scene_switch" type="TextureButton"]
+offset_right = 624.0
+offset_bottom = 261.0
+texture_normal = ExtResource("1_6c2wp")
+script = ExtResource("1_kg56c")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

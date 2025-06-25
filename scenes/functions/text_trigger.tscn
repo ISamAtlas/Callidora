@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ssth34s7p1hh"]
+
+[ext_resource type="Script" path="res://scripts/entities/pc/dialogue.gd" id="1_8qngc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u8xb"]
+size = Vector2(87, 49)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4096
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_8qngc")
+text = "I'm not ready to leave... I need my voice."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7u8xb")

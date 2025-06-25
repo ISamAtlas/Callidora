@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3b77vtma3a1u"]
+
+[ext_resource type="Script" path="res://scripts/objects/objects.gd" id="1_ya58i"]
+[ext_resource type="Shader" path="res://scripts/objects/auto_shade.gdshader" id="2_kd3eb"]
+[ext_resource type="Texture2D" uid="uid://c06oco7qr7sbe" path="res://assets/objects/trial2/test.png" id="3_cwe5p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w15qr"]
+shader = ExtResource("2_kd3eb")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2m53"]
+size = Vector2(59.8983, 84.8475)
+
+[node name="Test" type="Area2D"]
+position = Vector2(1, -32)
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ya58i")
+
+[node name="shadow" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_w15qr")
+position = Vector2(-68, 19.2)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_cwe5p")
+
+[node name="object" type="Sprite2D" parent="."]
+texture = ExtResource("3_cwe5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.42373, 21.5763)
+shape = SubResource("RectangleShape2D_x2m53")

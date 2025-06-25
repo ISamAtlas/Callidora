@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4u5jt7lhpjul"]
+
+[ext_resource type="Script" path="res://scripts/levels/marble/marble.gd" id="1_77211"]
+[ext_resource type="Texture2D" uid="uid://cx04w3h4mobtw" path="res://assets/objects/trial1/marble.png" id="1_r6r5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k81ru"]
+radius = 9.06089
+
+[node name="marble" type="RigidBody2D"]
+collision_layer = 65536
+collision_mask = 131072
+script = ExtResource("1_77211")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("1_r6r5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.6)
+scale = Vector2(1.27856, 1.27856)
+shape = SubResource("CircleShape2D_k81ru")
+debug_color = Color(7.70092e-07, 0.615011, 0.603591, 0.42)

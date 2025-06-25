@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjxd4hmk53cta"]
+
+[ext_resource type="PackedScene" uid="uid://bbhlg2pbu60lq" path="res://scenes/objects/puddle.tscn" id="1_wcvr3"]
+
+[node name="Node" type="Node2D"]
+
+[node name="puddle" parent="." instance=ExtResource("1_wcvr3")]
+position = Vector2(610, 122)
+
+[node name="puddle2" parent="." instance=ExtResource("1_wcvr3")]
+position = Vector2(-31, 122)
+
+[node name="puddle3" parent="." instance=ExtResource("1_wcvr3")]
+position = Vector2(211, 122)
+
+[node name="puddle4" parent="." instance=ExtResource("1_wcvr3")]
+position = Vector2(445, 93)

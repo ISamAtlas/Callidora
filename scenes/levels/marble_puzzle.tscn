@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkpwrp54dr5cx"]
+
+[ext_resource type="Script" path="res://scripts/levels/marble/puzzle.gd" id="1_48qks"]
+[ext_resource type="PackedScene" uid="uid://b4u5jt7lhpjul" path="res://scenes/levels/marble.tscn" id="2_ui0g5"]
+[ext_resource type="PackedScene" uid="uid://bfepev8boxqqt" path="res://scenes/objects/plank.tscn" id="3_6e2gr"]
+[ext_resource type="Script" path="res://scripts/levels/marble/trampoline.gd" id="4_2pay7"]
+[ext_resource type="Texture2D" uid="uid://jyyn4ku73lkw" path="res://assets/objects/trial1/trampoline.png" id="5_0hrtx"]
+[ext_resource type="Texture2D" uid="uid://b4pn0nvgalhq3" path="res://assets/objects/empty.png" id="5_oco4u"]
+[ext_resource type="Texture2D" uid="uid://bgibrhxml04k0" path="res://assets/objects/trial1/gold.png" id="7_74kt3"]
+[ext_resource type="Texture2D" uid="uid://x7el3abn53sx" path="res://assets/objects/trial1/star.png" id="8_x22h4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow21"]
+size = Vector2(738, 350.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrmhj"]
+size = Vector2(22.5532, 42.7083)
+
+[node name="MarblePuzzle" type="Node2D"]
+z_index = 10
+position = Vector2(690, 347)
+script = ExtResource("1_48qks")
+zoom_adjust = Vector2(3, 3)
+
+[node name="focal_point" type="Area2D" parent="."]
+position = Vector2(112, 81)
+scale = Vector2(0.0706914, 0.168952)
+collision_layer = 262144
+collision_mask = 0
+script = ExtResource("4_2pay7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="focal_point"]
+position = Vector2(106.5, 50.75)
+shape = SubResource("RectangleShape2D_eow21")
+
+[node name="marble" parent="." instance=ExtResource("2_ui0g5")]
+position = Vector2(-170, -113)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7, 3)
+scale = Vector2(1, 1.12)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("4_2pay7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(149, 50.75)
+shape = SubResource("RectangleShape2D_eow21")
+
+[node name="plank" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(-164, -85)
+rotation = 0.155793
+scale = Vector2(9.051, 1)
+rotatable = false
+
+[node name="plank2" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(-38, -31)
+rotation = -0.337699
+scale = Vector2(6.785, 1)
+
+[node name="plank3" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(50, 12)
+rotation = -2.15668
+scale = Vector2(8.16001, 0.631169)
+speed = 2.5
+
+[node name="plank4" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(424, 121)
+rotation = -0.525371
+scale = Vector2(9.489, 1)
+speed = 3.75
+
+[node name="obstacle1" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(-115, 109)
+scale = Vector2(6.378, 0.5)
+rotatable = false
+speed = 0.4
+auto_spin = true
+
+[node name="obstacle2" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(-175, 31)
+rotation = -0.783725
+scale = Vector2(6.378, 0.5)
+rotatable = false
+speed = -5.0
+auto_spin = true
+
+[node name="trampoline" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(202, 243)
+scale = Vector2(4.69009, 2.82481)
+rotatable = false
+texture = ExtResource("5_oco4u")
+
+[node name="Area2D" type="Area2D" parent="trampoline"]
+position = Vector2(-0.852861, 5.66409)
+scale = Vector2(0.994873, 1)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("4_2pay7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trampoline/Area2D"]
+position = Vector2(0.793991, -17.4854)
+scale = Vector2(0.99832, 0.351761)
+shape = SubResource("RectangleShape2D_vrmhj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="trampoline"]
+position = Vector2(-0.426431, -1.41602)
+scale = Vector2(1, 1.92041)
+texture = ExtResource("5_0hrtx")
+
+[node name="plank5" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(16, 206)
+rotation = 1.11423
+scale = Vector2(6.67669, 0.629314)
+speed = 5.0
+
+[node name="victory" parent="." instance=ExtResource("3_6e2gr")]
+self_modulate = Color(2.69532e-06, 0.664434, 0.670246, 1)
+position = Vector2(-155, 245)
+scale = Vector2(4.69009, 0.744814)
+rotatable = false
+texture = ExtResource("7_74kt3")
+
+[node name="Area2D" type="Area2D" parent="victory"]
+position = Vector2(-0.576699, 0)
+scale = Vector2(0.739014, 1)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("4_2pay7")
+victory_pad = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="victory/Area2D"]
+position = Vector2(0.536942, -14.4048)
+shape = SubResource("RectangleShape2D_vrmhj")
+
+[node name="obstacle3" parent="." instance=ExtResource("3_6e2gr")]
+position = Vector2(-18, 87)
+rotation = -2.62311
+scale = Vector2(6.378, 0.5)
+rotatable = false
+speed = -5.0
+auto_spin = true
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(-155, 213)
+scale = Vector2(1.15894, 1.15894)
+texture = ExtResource("8_x22h4")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="trampoline/Area2D" to="trampoline/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="victory/Area2D" to="victory/Area2D" method="_on_body_entered"]

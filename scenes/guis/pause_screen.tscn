@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dy75k7eidj8qi"]
+
+[node name="PauseScreen" type="Node2D"]
+process_mode = 3

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ngrasdt84rrf"]
+
+[ext_resource type="Texture2D" uid="uid://ct576gdhbv0dg" path="res://assets/objects/markers.png" id="1_mv1vd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egl8x"]
+atlas = ExtResource("1_mv1vd")
+region = Rect2(0, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu3ky"]
+atlas = ExtResource("1_mv1vd")
+region = Rect2(19, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdvq8"]
+atlas = ExtResource("1_mv1vd")
+region = Rect2(38, 0, 19, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prjpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egl8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu3ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdvq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Marker" type="AnimatedSprite2D"]
+scale = Vector2(2.2, 2.2)
+sprite_frames = SubResource("SpriteFrames_prjpl")

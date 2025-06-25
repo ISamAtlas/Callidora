@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://c76jm5jxdqg1t"]
+
+[ext_resource type="Script" path="res://scripts/guis/credits.gd" id="1_i11so"]
+[ext_resource type="Texture2D" uid="uid://b4omo1buflb1v" path="res://assets/entities/pc/black_screen.png" id="2_kd3yl"]
+[ext_resource type="Texture2D" uid="uid://bx5vxru6t74y2" path="res://assets/misc/credits/marvin.png" id="3_6bk32"]
+[ext_resource type="Texture2D" uid="uid://doh8cb8siunym" path="res://assets/misc/credits/stinky.png" id="4_eq6l8"]
+[ext_resource type="PackedScene" uid="uid://volqi5eh2xft" path="res://scenes/buttons/generic_scene_switch.tscn" id="5_q6u03"]
+
+[sub_resource type="Animation" id="Animation_jfabh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("contents/Node:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nxb8e"]
+resource_name = "fade_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("contents:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("contents/Node:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.8, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5svmm"]
+_data = {
+"RESET": SubResource("Animation_jfabh"),
+"fade_in": SubResource("Animation_nxb8e")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk67a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6bk32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eq6l8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.25
+}]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_i11so")
+
+[node name="BlackScreen" type="Sprite2D" parent="."]
+position = Vector2(637, 377)
+scale = Vector2(51.7068, 51.7068)
+texture = ExtResource("2_kd3yl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5svmm")
+}
+
+[node name="contents" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+
+[node name="Label" type="Label" parent="contents"]
+offset_left = 336.0
+offset_top = 31.0
+offset_right = 889.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 150
+text = "CREDITS"
+
+[node name="Label2" type="Label" parent="contents"]
+offset_left = 378.0
+offset_top = 167.0
+offset_right = 931.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 30
+text = "This was our first game jam!"
+
+[node name="Label3" type="Label" parent="contents"]
+self_modulate = Color(0.813258, 0.813258, 0.813258, 1)
+offset_left = 42.0
+offset_top = 344.0
+offset_right = 595.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 25
+text = "Sam as the Developer and Story Designer
+
+alt as the Sound Designer and Composor
+
+Phia as the Head Artist
+
+Shadd as the Co Artist
+
+Zen as the Story designer and Artist"
+
+[node name="Label4" type="Label" parent="contents"]
+offset_left = 52.0
+offset_top = 260.0
+offset_right = 633.0
+offset_bottom = 396.0
+theme_override_font_sizes/font_size = 50
+text = "Brought to you by"
+
+[node name="Label5" type="Label" parent="contents"]
+offset_left = 638.0
+offset_top = 256.0
+offset_right = 1235.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 75
+text = "Special thanks to"
+
+[node name="Node" type="Node2D" parent="contents"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="contents/Node"]
+position = Vector2(682, 474)
+scale = Vector2(0.639999, 0.639999)
+sprite_frames = SubResource("SpriteFrames_kk67a")
+autoplay = "default"
+frame_progress = 0.843729
+
+[node name="Label6" type="Label" parent="contents/Node"]
+offset_left = 764.0
+offset_top = 421.0
+offset_right = 1317.0
+offset_bottom = 557.0
+theme_override_font_sizes/font_size = 30
+text = "Everyone who played! This was
+a long, and sometimes bleak
+project. We started from nothing,
+and now here we are! Thanks
+for seeing it through, 
+
+hopefully dogding the bugs...."
+
+[node name="generic_scene_switch" parent="contents/Node" instance=ExtResource("5_q6u03")]
+offset_left = 222.0
+offset_top = 595.0
+offset_right = 846.0
+offset_bottom = 856.0
+scale = Vector2(0.42519, 0.42519)
+target_scene_path = "res://scenes/guis/starting_menu.tscn"
+play_music = true
+
+[node name="Label" type="Label" parent="contents/Node/generic_scene_switch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "Back to Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1

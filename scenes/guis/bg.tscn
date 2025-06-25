@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce77qvftovpke"]
+
+[ext_resource type="Texture2D" uid="uid://btyvbtfhq4gw5" path="res://assets/misc/title_screen/bg.png" id="1_so5le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8og0c"]
+atlas = ExtResource("1_so5le")
+region = Rect2(0, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxt16"]
+atlas = ExtResource("1_so5le")
+region = Rect2(1282, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db6f1"]
+atlas = ExtResource("1_so5le")
+region = Rect2(2564, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jun7v"]
+atlas = ExtResource("1_so5le")
+region = Rect2(0, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4udl"]
+atlas = ExtResource("1_so5le")
+region = Rect2(1282, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqjaf"]
+atlas = ExtResource("1_so5le")
+region = Rect2(2564, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4qwr"]
+atlas = ExtResource("1_so5le")
+region = Rect2(0, 1444, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uen5"]
+atlas = ExtResource("1_so5le")
+region = Rect2(1282, 1444, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2xhy"]
+atlas = ExtResource("1_so5le")
+region = Rect2(2564, 1444, 1282, 722)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lbkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8og0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxt16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db6f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jun7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4udl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqjaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4qwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uen5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2xhy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.4
+}]
+
+[node name="bg" type="Node2D"]
+
+[node name="Bg" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.929922, 0.924001, 0.922282, 1)
+z_index = -1
+position = Vector2(640, 360)
+sprite_frames = SubResource("SpriteFrames_5lbkh")
+autoplay = "default"

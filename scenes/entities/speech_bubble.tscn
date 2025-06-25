@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwhcy42mguoic"]
+
+[ext_resource type="Texture2D" uid="uid://bhnro5wobkamd" path="res://assets/objects/speech_bubbles/speech_bubble.png" id="1_esy84"]
+
+[node name="SpeechBubble" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(60, -35)
+scale = Vector2(0.0600609, 0.0600609)
+texture = ExtResource("1_esy84")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -616.0
+offset_top = -283.0
+offset_right = 633.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 80
+autowrap_mode = 3

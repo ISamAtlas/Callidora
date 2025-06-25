@@ -1,0 +1,405 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccj5we7ewfsqb"]
+
+[ext_resource type="Script" path="res://scripts/entities/mirror/confrontation_area.gd" id="1_vb22m"]
+[ext_resource type="Texture2D" uid="uid://cf0gu4bfnwwsg" path="res://assets/objects/speech_bubbles/large_message.png" id="2_k1odd"]
+[ext_resource type="Texture2D" uid="uid://dfrg10xxd38im" path="res://assets/objects/speech_bubbles/choice_box.png" id="3_dfohv"]
+[ext_resource type="Texture2D" uid="uid://cdjhfh3bx4vos" path="res://assets/objects/speech_bubbles/choice_box_highlighted.png" id="4_1seo3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60f14"]
+size = Vector2(86, 48)
+
+[sub_resource type="Animation" id="Animation_pqyww"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vy3ai"]
+resource_name = "flash"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.3, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n88qm"]
+_data = {
+"RESET": SubResource("Animation_pqyww"),
+"flash": SubResource("Animation_vy3ai")
+}
+
+[sub_resource type="Animation" id="Animation_hwg04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage/option1/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage/option2/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LargeMessage/posed_question:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/LargeMessage:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_70c51"]
+resource_name = "init"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-6, 102.75), Vector2(-6, -10.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.176471), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LargeMessage/option2/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/LargeMessage/option1/Label:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/LargeMessage/posed_question:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qroa8"]
+resource_name = "init_write"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage/option1/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.2, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage/option2/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.2, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LargeMessage/posed_question:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.4, 3.1, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ktcqp"]
+resource_name = "interrupt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage/posed_question:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage/option1/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LargeMessage/option2/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jyqwb"]
+resource_name = "rewrite"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/LargeMessage/option1/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.9, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/LargeMessage/option2/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.9, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LargeMessage/posed_question:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.1, 3.8, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 0.0, 1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pfni"]
+_data = {
+"RESET": SubResource("Animation_hwg04"),
+"init": SubResource("Animation_70c51"),
+"init_write": SubResource("Animation_qroa8"),
+"interrupt": SubResource("Animation_ktcqp"),
+"rewrite": SubResource("Animation_jyqwb")
+}
+
+[node name="Mirror" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 129
+script = ExtResource("1_vb22m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_60f14")
+debug_color = Color(1, 1, 0.207843, 0.419608)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(640, 400)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 640, 400)
+
+[node name="LargeMessage" type="Sprite2D" parent="CanvasLayer"]
+z_index = -4
+position = Vector2(-6, -10.75)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_k1odd")
+
+[node name="posed_question" type="Label" parent="CanvasLayer/LargeMessage"]
+self_modulate = Color(0.529412, 0.160784, 0, 1)
+offset_left = -1531.0
+offset_top = -1650.0
+offset_right = 1525.0
+offset_bottom = 1056.0
+theme_override_font_sizes/font_size = 328
+text = "The Coincidental Samaritan… What brings you here?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="option1" type="TextureButton" parent="CanvasLayer/LargeMessage"]
+offset_left = -1200.0
+offset_top = 943.75
+offset_right = -900.0
+offset_bottom = 1001.75
+scale = Vector2(7.79017, 7.79017)
+focus_mode = 0
+texture_normal = ExtResource("3_dfohv")
+texture_hover = ExtResource("4_1seo3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/LargeMessage/option1"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 2.0
+offset_right = 272.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = "To retrieve what is mine"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="option2" type="TextureButton" parent="CanvasLayer/LargeMessage"]
+offset_left = -1200.0
+offset_top = 1537.5
+offset_right = -900.0
+offset_bottom = 1595.5
+scale = Vector2(7.79017, 7.79017)
+focus_mode = 0
+texture_normal = ExtResource("3_dfohv")
+texture_hover = ExtResource("4_1seo3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/LargeMessage/option2"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 2.0
+offset_right = 272.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = "The correction of injustice"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/LargeMessage"]
+offset_left = -4193.75
+offset_top = -743.75
+offset_right = -1361.75
+offset_bottom = -452.75
+theme_override_font_sizes/font_size = 160
+text = "Press [Enter] to skip
+dialogue loading"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n88qm")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3pfni")
+}
+
+[node name="response_update" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="question_update" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/LargeMessage/option1" to="Area2D" method="_on_option_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/LargeMessage/option2" to="Area2D" method="_on_option_2_pressed"]
+[connection signal="timeout" from="response_update" to="Area2D" method="_on_add_response_timeout"]
+[connection signal="timeout" from="question_update" to="Area2D" method="_on_add_question"]

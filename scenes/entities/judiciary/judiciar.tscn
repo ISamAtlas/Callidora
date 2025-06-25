@@ -1,0 +1,348 @@
+[gd_scene load_steps=23 format=3 uid="uid://d2uabplcutk2u"]
+
+[ext_resource type="Script" path="res://scripts/entities/judiciary/judiciar_logic.gd" id="1_pt18e"]
+[ext_resource type="Texture2D" uid="uid://cajljrb3bdofy" path="res://assets/entities/judiciary/idle.png" id="2_g023x"]
+[ext_resource type="PackedScene" uid="uid://dfvvebq8gfhpy" path="res://scenes/guis/health_bar.tscn" id="2_ggad8"]
+[ext_resource type="PackedScene" uid="uid://cwhcy42mguoic" path="res://scenes/entities/speech_bubble.tscn" id="4_b6vnu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu8om"]
+size = Vector2(536, 229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahd65"]
+size = Vector2(92, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35lld"]
+atlas = ExtResource("2_g023x")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuswt"]
+atlas = ExtResource("2_g023x")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twenx"]
+atlas = ExtResource("2_g023x")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d30w"]
+atlas = ExtResource("2_g023x")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu5ek"]
+atlas = ExtResource("2_g023x")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb7l1"]
+atlas = ExtResource("2_g023x")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvktk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35lld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuswt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twenx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d30w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu5ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb7l1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_tjpfv"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glvb0"]
+resource_name = "stunned"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.00179894, 0.151727, 0.643368, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fblf"]
+_data = {
+"death": SubResource("Animation_tjpfv"),
+"stunned": SubResource("Animation_glvb0")
+}
+
+[sub_resource type="Animation" id="Animation_cfcda"]
+resource_name = "shadow"
+length = 5.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 5.3, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0.67451, 0.0588235, 0.0156863, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwj11"]
+_data = {
+"shadow": SubResource("Animation_cfcda")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k6bt"]
+size = Vector2(644, 255.5)
+
+[sub_resource type="Animation" id="Animation_qa6pt"]
+resource_name = "classic_bubble"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 6.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-121, -13), Vector2(-121, -68), Vector2(-121, -68), Vector2(-121, -13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 6.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 2.3)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpeechBubble:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.533333, 0.258824, 0.278431, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:will_fight")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.2, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ocoga"]
+resource_name = "command_bubble"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeechBubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.3, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(66, -1), Vector2(66, -42), Vector2(66, -42), Vector2(66, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeechBubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.7, 1.3, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.83098, 0.055085, 0.326412, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeechBubble/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.7)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84wn7"]
+_data = {
+"classic_bubble": SubResource("Animation_qa6pt"),
+"command_bubble": SubResource("Animation_ocoga")
+}
+
+[node name="Judiciar" type="StaticBody2D"]
+position = Vector2(-1, -35)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pt18e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="health_bar" parent="CanvasLayer" instance=ExtResource("2_ggad8")]
+visible = false
+offset_left = 430.0
+offset_top = 645.0
+offset_right = 470.0
+offset_bottom = 649.0
+scale = Vector2(10.5271, 10.5271)
+
+[node name="Label" type="Label" parent="CanvasLayer/health_bar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0257
+offset_top = -8.93964
+offset_right = 106.974
+offset_bottom = 17.0604
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.177205, 0.177205)
+theme_override_font_sizes/font_size = 28
+text = "Judiciary"
+
+[node name="focus_range" type="Area2D" parent="."]
+process_mode = 4
+visible = false
+position = Vector2(-3, -41)
+scale = Vector2(3.78097, 2.22097)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="focus_range"]
+position = Vector2(0, -81.5)
+shape = SubResource("RectangleShape2D_uu8om")
+
+[node name="hit_box" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ahd65")
+
+[node name="attack_cd" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_xvktk")
+autoplay = "default"
+frame_progress = 0.966874
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8fblf")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_vwj11")
+}
+
+[node name="attacked_cd" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="battleInit" type="Area2D" parent="."]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.902694, 0.902694)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="battleInit"]
+position = Vector2(0, -94.25)
+shape = SubResource("RectangleShape2D_6k6bt")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("4_b6vnu")]
+self_modulate = Color(0.533333, 0.258824, 0.278431, 1)
+position = Vector2(-121, -13)
+scale = Vector2(0.100063, 0.100063)
+flip_h = true
+
+[node name="speech2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_84wn7")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = -616.0
+offset_top = -283.0
+offset_right = 633.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 80
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.131259
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -616.0
+offset_top = -283.0
+offset_right = 633.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 80
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.131259
+
+[connection signal="body_entered" from="focus_range" to="." method="_on_focus_entered"]
+[connection signal="body_exited" from="focus_range" to="." method="_on_focus_exited"]
+[connection signal="timeout" from="attack_cd" to="." method="_on_attack_cd"]
+[connection signal="timeout" from="attacked_cd" to="." method="_on_attacked_cd_timeout"]
+[connection signal="area_entered" from="battleInit" to="." method="_on_battle_init"]
